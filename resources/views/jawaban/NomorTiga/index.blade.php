@@ -16,12 +16,32 @@
                 <td>{{ $event->start }}</td>
                 <td>{{ $event->end }}</td>
                 <td>
-                    <button class="btn btn-primary edit-btn" data-id="{{ $event->id }}" data-toggle="modal" data-target="#editModal">E</button>
-                    <form action="{{ route('event.delete') }}" method="POST" style="display:inline-block;">
-                        @csrf
-                        <input type="hidden" name="id" value="{{ $event->id }}">
-                        <button type="submit" class="btn btn-danger">D</button>
-                    </form>
+                    <div 
+    class="action-buttons d-flex flex-column align-items-start" 
+    style="gap: 10px;">
+    <button 
+        class="btn btn-primary edit-btn" 
+        data-id="{{ $event->id }}" 
+        data-toggle="modal" 
+        data-target="#editModal" 
+        style="width: 70px; height: 40px; text-align: center;">
+        Edit
+    </button>
+    <form 
+        action="{{ route('event.delete') }}" 
+        method="POST" 
+        style="margin: 0;">
+        @csrf
+        <input type="hidden" name="id" value="{{ $event->id }}">
+        <button 
+            type="submit" 
+            class="btn btn-danger" 
+            style="width: 70px; height: 40px; text-align: center;">
+            Del
+        </button>
+    </form>
+</div>
+
                 </td>
             </tr>
         @endforeach
